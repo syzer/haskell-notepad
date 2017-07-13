@@ -21,7 +21,7 @@ sum [ x | x <- [1..999], x `mod` 3 == 0 || x `mod` 5 == 0]
 --233168
 
 
---euler91 (tringles)
+-- TODO euler91 (tringles)
 --a^2 + b^2 = c^2
 --https://projecteuler.net/problem=91
 --There are exactly fourteen triangles containing a right angle that can be formed when each co-ordinate lies between 0 and 2 inclusive; that is,
@@ -34,3 +34,9 @@ let tianglesWithRightAngle = [(a,b,c) | c <- [1..50], b <- [1..c], a <- [1..b], 
 euler91 = length tianglesWithRightAngle
 --2
 
+distance = (x1 , y1) (x2 , y2) = sqrt (x * x + y * y)
+    where
+      x = x1 - x2
+      y = y1 - y2
+
+--distance (1, 1) (2, 2)
