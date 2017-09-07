@@ -120,3 +120,14 @@ howManyPrimes n = length (primes n)
 -- howManyPrimes 10
 -- 4
 -- 168
+
+-- zip :: [a] -> [b] -> [(a,b)]
+-- ['a','b','c'] [1,2,3,4]
+-- [('a',1),('b',2),('c',3)]
+
+
+pairs :: [a] -> [(a,a)]
+pairs xs = zip xs (tail xs)
+
+-- pairs [1,2,3,4]
+-- [(1,2), (2,3), (3,4)]
