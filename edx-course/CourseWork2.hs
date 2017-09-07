@@ -70,7 +70,7 @@ add2 = \x -> (\y -> x + y)
 
 -- they both return function
 const x _ = x
-const x = \_ -> x
+-- const x = \_ -> x
 
 -- sectioning:
 -- define function without name or lambdas
@@ -82,3 +82,41 @@ const x = \_ -> x
 -- doubling function
 -- (*2)
 --(/2) halving function
+
+
+-- list comprehensions AKA sequel
+-- multiple generators are like nested loops
+comp = [(x, y) | y <-[4,5], x <-[1,2,3]]
+-- [(1,4),(2,4),(3,4),(1,5),(2,5),(3,5)]
+
+comp2 = [(x, y) | x <-[1,2,3], y <-[4,5]]
+-- [(1,4),(1,5),(2,4),(2,5),(3,4),(3,5)]
+
+-- they can depend
+comp3 = [(x, y) | x <-[1..3], y <- [x..3]]
+-- [(1,1),(1,2),(1,3),(2,2),(2,3),(3,3)]
+
+concat2 :: [[a]] -> [a]
+concat2 xss = [x | xs <- xss, x <- xs]
+flatten = concat [[1,2,3],[4,5], [6]]
+-- [1,2,3,4,5,6]
+
+-- can have a guard
+factors :: Int -> [Int]
+factors n = [ x | x <-[1..n], n `mod` x == 0]
+-- [1,3,5,15]
+
+prime :: Int -> Bool
+prime n = factors n == [1, n]
+-- prime 3
+-- True
+
+
+primes :: Int -> [Int]
+primes n = [x | x <-[1..n], prime x]
+
+howManyPrimes :: Int -> Int
+howManyPrimes n = length (primes n)
+-- howManyPrimes 10
+-- 4
+-- 168
